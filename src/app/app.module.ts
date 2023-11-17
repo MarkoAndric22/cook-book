@@ -7,12 +7,20 @@ import { AllergenComponent } from './allergen/allergen.component';
 import { AllergenListComponent } from './allergen-list/allergen-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { IngridientComponent } from './ingridient/ingridient.component';
+import { IngridientListComponent } from './ingridient-list/ingridient-list.component';
+import { RecipeComponent } from './recipe/recipe.component';
+import { RecipeListComponent } from './recipe-list/recipe-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AllergenComponent,
-    AllergenListComponent
+    AllergenListComponent,
+    IngridientComponent,
+    IngridientListComponent,
+    RecipeComponent,
+    RecipeListComponent
   ],
   imports: [
     BrowserModule,

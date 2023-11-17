@@ -17,13 +17,13 @@
       <tr *ngFor="let allergen of allergens">
         <td>{{allergen.name}}</td>
         <td><div class="btn-group" role="group" aria-label="Basic mixed styles example">
-            <button type="button" class="btn btn-danger  mx-2" (click)="onDelete(allergen)">Delete</button>
-            <button type="button" class="btn btn-warning  mx-2" [routerLink]="['../allergen', allergen.id]">Details</button>
+            <button type="button" class="btn btn-danger  mx-2" (click)="onDelete(allergen)"><i class="bi bi-trash"></i></button>
+            <button type="button" class="btn btn-warning  mx-2" [routerLink]="['../allergen', allergen.id]"><i class="bi bi-eye"></i></button>
           </div></td>
       </tr>
     </tbody>
   </table>
-  <i class="bi bi-eye-fill"></i>
+  <a href="#"><i class="bi bi-eye"></i></a>
 </div>
 </div>
 </div>

@@ -1,0 +1,81 @@
+<form [formGroup]="recipeForm" *ngIf="recipeForm" (ngSubmit)="onSave()">
+    <div class="row justify-content-center">
+  
+      <div class="col-md-8 col-lg-6">
+  
+        <div class="from-group">
+          <label for="name">Name</label>
+          <input id="name" class="form-control" placeholder="Name"  type="text" formControlName="name"/>
+          <div class="alert alert-danger" *ngIf="hasErrors('name')">
+            <span *ngIf="hasErrors('name','required')" >
+              <small>Name is required!</small>
+            </span>
+            <span *ngIf="hasErrors('name','minlength')" >
+              <small>Name must to be min 2 length!</small>
+            </span>
+          <span *ngIf="hasErrors('name','maxlength')" >
+            <small>Name must to be max 30 length!</small>
+          </span>
+          </div>
+        </div>
+
+        <div class="from-group">
+            <label for="description">description</label>
+            <input id="description" class="form-control" placeholder="description"  type="text" formControlName="description"/>
+            <div class="alert alert-danger" *ngIf="hasErrors('description')">
+              <span *ngIf="hasErrors('description','required')" >
+                <small>description is required!</small>
+              </span>
+            </div>
+          </div>
+
+          <div class="from-group">
+            <label for="stepsForPrepare">stepsForPrepare</label>
+            <input id="stepsForPrepare" class="form-control" placeholder="stepsForPrepare"  type="text" formControlName="stepsForPrepare"/>
+            <div class="alert alert-danger" *ngIf="hasErrors('stepsForPrepare')">
+              <span *ngIf="hasErrors('stepsForPrepare','required')" >
+                <small>stepsForPrepare is required!</small>
+              </span>
+            </div>
+          </div>
+
+          <div class="from-group">
+            <label for="timeForPrepare">timeForPrepare</label>
+            <input id="timeForPrepare" class="form-control" placeholder="timeForPrepare"  type="text" formControlName="timeForPrepare"/>
+            <div class="alert alert-danger" *ngIf="hasErrors('timeForPrepare')">
+              <span *ngIf="hasErrors('timeForPrepare','required')" >
+                <small>timeForPrepare is required!</small>
+              </span>
+            </div>
+          </div>
+
+          <div class="from-group">
+            <label for="quantity">quantity</label>
+            <input id="quantity" class="form-control" placeholder="quantity"  type="text" formControlName="quantity"/>
+            <div class="alert alert-danger" *ngIf="hasErrors('quantity')">
+              <span *ngIf="hasErrors('quantity','required')" >
+                <small>quantity is required!</small>
+              </span>
+            </div>
+          </div>
+
+          <label>Ingridients:</label>
+          <ul>
+            <li *ngFor="let ingridient of recipeForm.get('ingridients')?.value">{{ ingridient.name }}</li>
+          </ul>
+        
+        
+                  
+          
+                <div class="d-flex justify-content-end mt-2">
+                  <button type="button" class="mx-1 btn  btn-outline-primary" (click)="onSave()"><i class="bi bi-save"></i></button>
+                  <button *ngIf="id" class="mx-1 btn  btn-outline-danger" [routerLink]="['../../recipes']" queryParamsHandling="preserve" ><i class="bi bi-x-circle"></i> Cancel</button>
+                  <button *ngIf="!id" class="mx-1 btn  btn-outline-danger" [routerLink]="['../recipes']" queryParamsHandling="preserve" ><i class="bi bi-x-circle"></i> Cancel</button>
+                </div>
+              </div>
+          
+          
+              </div>
+          
+          </form>
+        

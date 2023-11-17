@@ -1,0 +1,36 @@
+<div class="container justify-content-center my-2">
+    <div class="row">
+       <div class="my-2">
+           <button class="btn btn-outline-primary " [routerLink]="['/recipe']">Add</button>
+       </div>
+     <div class="col-sm-12">
+
+<table class="table table-bordered table-responsive ">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">description</th>
+        <th scope="col">stepsForPrepare</th>
+        <th scope="col">timeForPrepare</th>
+        <th scope="col">quantity</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let recipe of recipes">
+        <td>{{recipe.name}}</td>
+        <td>{{recipe.description}}</td>
+        <td>{{recipe.stepsForPrepare}}</td>
+        <td>{{recipe.timeForPrepare}}</td>
+        <td>{{recipe.quantity}}</td>
+        <td><div class="btn-group" role="group" aria-label="Basic mixed styles example">
+            <button type="button" class="btn btn-danger  mx-2" (click)="onDelete(recipe)">Delete</button>
+            <button type="button" class="btn btn-warning  mx-2" [routerLink]="['../recipe', recipe.id]">Details</button>
+          </div></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</div>
+

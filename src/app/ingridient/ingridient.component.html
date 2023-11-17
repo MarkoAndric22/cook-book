@@ -1,0 +1,106 @@
+
+<form [formGroup]="ingridientForm" *ngIf="ingridientForm" (ngSubmit)="onSave()">
+    <div class="row justify-content-center">
+  
+      <div class="col-md-8 col-lg-6">
+  
+        <div class="from-group">
+          <label for="name">Name</label>
+          <input id="name" class="form-control" placeholder="Name"  type="text" formControlName="name"/>
+          <div class="alert alert-danger" *ngIf="hasErrors('name')">
+            <span *ngIf="hasErrors('name','required')" >
+              <small>Name is required!</small>
+            </span>
+            <span *ngIf="hasErrors('name','minlength')" >
+              <small>Name must to be min 2 length!</small>
+            </span>
+          <span *ngIf="hasErrors('name','maxlength')" >
+            <small>Name must to be max 30 length!</small>
+          </span>
+          </div>
+        </div>
+
+        <div class="from-group">
+            <label for="unitOfMeasure">unitOfMeasure</label>
+            <input id="unitOfMeasure" class="form-control" placeholder="unitOfMeasure"  type="text" formControlName="unitOfMeasure"/>
+            <div class="alert alert-danger" *ngIf="hasErrors('unitOfMeasure')">
+              <span *ngIf="hasErrors('unitOfMeasure','required')" >
+                <small>unitOfMeasure is required!</small>
+              </span>
+            </div>
+          </div>
+
+          <div class="from-group">
+            <label for="numberCaloria">numberCaloria</label>
+            <input id="numberCaloria" class="form-control" placeholder="numberCaloria"  type="text" formControlName="numberCaloria"/>
+            <div class="alert alert-danger" *ngIf="hasErrors('numberCaloria')">
+              <span *ngIf="hasErrors('numberCaloria','required')" >
+                <small>numberCaloria is required!</small>
+              </span>
+            </div>
+          </div>
+
+          <div class="from-group">
+            <label for="carbohydrates">carbohydrates</label>
+            <input id="carbohydrates" class="form-control" placeholder="carbohydrates"  type="text" formControlName="carbohydrates"/>
+            <div class="alert alert-danger" *ngIf="hasErrors('carbohydrates')">
+              <span *ngIf="hasErrors('carbohydrates','required')" >
+                <small>carbohydrates is required!</small>
+              </span>
+            </div>
+          </div>
+
+          <div class="from-group">
+            <label for="fats">fats</label>
+            <input id="fats" class="form-control" placeholder="fats"  type="text" formControlName="fats"/>
+            <div class="alert alert-danger" *ngIf="hasErrors('fats')">
+              <span *ngIf="hasErrors('fats','required')" >
+                <small>fats is required!</small>
+              </span>
+            </div>
+          </div>
+
+          <div class="from-group">
+            <label for="proteins">proteins</label>
+            <input id="proteins" class="form-control" placeholder="proteins"  type="text" formControlName="proteins"/>
+            <div class="alert alert-danger" *ngIf="hasErrors('proteins')">
+              <span *ngIf="hasErrors('proteins','required')" >
+                <small>proteins is required!</small>
+              </span>
+            </div>
+          </div>
+
+          <!-- <div class="from-group">
+            <label for="allergens">Allergens</label>
+            <input id="allergens" class="form-control" placeholder="allergens"  type="text" formControlName="allergens.name"/>
+            <div class="alert alert-danger" *ngIf="hasErrors('allergens')">
+              <span *ngIf="hasErrors('allergens','required')" >
+                <small>Allergens is required!</small>
+              </span>
+            </div>
+          </div> -->
+
+          <div formArrayName="allergens">
+            <h2>Allergens</h2>
+            <button type="button" (click)="addAllergen()" class="btn btn-success">+ Add another allergen</button>
+          
+            <div *ngFor="let allergen of allergens.controls; let i=index" [formGroupName]="i">
+              <div class="d-flex justify-content-between my-1">
+                <input class="form-control" id="allergen-{{ i }}" [(ngModel)]="allergen.value.name" type="text"  formControlName="name" ><button class="btn btn-sm border" type="button" (click)="removeAllergen(i)">X</button>
+              </div>
+            </div>
+          </div>
+          
+          
+  
+        <div class="d-flex justify-content-end mt-2">
+          <button type="button" class="mx-1 btn  btn-outline-primary" (click)="onSave()"><i class="bi bi-save"></i></button>
+          <button *ngIf="id" class="mx-1 btn  btn-outline-danger" [routerLink]="['../../ingridients']" queryParamsHandling="preserve" ><i class="bi bi-x-circle"></i> Cancel</button>
+          <button *ngIf="!id" class="mx-1 btn  btn-outline-danger" [routerLink]="['../ingridients']" queryParamsHandling="preserve" ><i class="bi bi-x-circle"></i> Cancel</button>
+        </div>
+      </div>
+  
+  
+      </div>
+  
+  </form>
